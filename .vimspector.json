@@ -3,8 +3,8 @@
 		"cpp:launch": {
 			"adapter": "vscode-cpptools",
 			"configuration": {
-				"name": "cpp",
-				"type": "cppdbg",
+				"name": "c",
+				"type": "cpp",
 				"request": "launch",
 				"program": "${fileDirname}/demo",
 				"args": ["*${ProgramArgs}"],
@@ -16,6 +16,20 @@
 				"logging": {
 					"engineLogging": true
 				}
+			}
+		},
+		"python: Launch": {
+			"adapter": "debugpy",
+			"configuration": {
+				"name": "python",
+				"type": "python",
+				"request": "launch",
+				"cwd": "${workspaceRoot}",
+				"python": "/usr/bin/python3",
+				"stopOnEntry": true,
+				"console": "externalTerminal",
+				"debugOptions": [],
+				"program": "${file}"
 			}
 		}
 	}
