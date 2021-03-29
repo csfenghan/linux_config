@@ -35,6 +35,9 @@ Plug 'Shougo/echodoc.vim'				"输入时代码提示"
 Plug 'vim-airline/vim-airline'				"vim状态栏"
 Plug 'boydos/emmet-vim'					"html插件"
 Plug 'puremourning/vimspector'				"调试"
+
+Plug 'godlygeek/tabular'				"markdown插件"
+Plug 'plasticboy/vim-markdown'
 			
 call plug#end()
 
@@ -104,8 +107,9 @@ autocmd BufWrite *.c,*.cpp,*.py 			"设置发生保存事件时执行格式化
 noremap <F1> :Autoformat<CR>				"设置F1为格式化
 let g:autoformat_verbosemode=1
 
-let g:formatdef_clangformat_my= '"clang-format -style=\"{BasedOnStyle: llvm, IndentWidth: 8, ColumnLimit: 100}\""' 
+let g:formatdef_clangformat_my= '"clang-format -style=\"{BasedOnStyle: llvm, IndentWidth: 8, ColumnLimit: 80}\""' 
 let g:formatters_c = ['clangformat_my']
+let g:formatters_cpp = ['clangformat_my']
 
 "echodoc配置
 set noshowmode						"要使用插件必须关闭模式提示"
@@ -126,3 +130,12 @@ nmap <F7> :call vimspector#Reset()<cr>
 nmap <F8> <Plug>VimspectorToggleBreakpoint
 nmap <C-F8> <Plug>VimspectorToggleConditionalBreakpoint	
 nmap <F9> <Plug>VimspectorRunToCursor	
+
+"markdown配置
+let g:vim_markdown_folding_disabled = 1  		"不折叠显示，默认是折叠显示，看个人习惯
+let g:vim_markdown_override_foldtext = 0  
+let g:vim_markdown_folding_level = 6    		"可折叠的级数，对应md的标题级别
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_emphasis_multiline = 0
+set conceallevel=2
+let g:vim_markdown_frontmatter=1
