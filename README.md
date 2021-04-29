@@ -6,14 +6,10 @@
 
 2. [universal-ctags](https://github.com/universal-ctags/ctags)  //ubuntu20之前的版 本只能通过下载源码编译的方式安装
 
-3. clang-format
-
-4. python3-pylint-common
-
 ## 安装依赖
 
     sudo apt update
-    sudo apt install clang cmake vim python3 python3-dev
+    sudo apt install clang cmake vim python3 python3-dev python3-pylint-common clang-format
 
 ## 安装
     git clone git@github.com:csfenghan/vim_config.git
