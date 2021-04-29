@@ -15,7 +15,9 @@
     sudo apt update
     sudo apt install clang cmake vim python3 python3-dev
 
-## 安装ycm
+## 安装
     git clone git@github.com:csfenghan/vim_config.git
+    cd vim_config && cp .vimrc ~ && cp -r .vim ~
+    
     sudo apt install vim-addon-manager vim-youcompleteme
     vim-addons install youcompleteme
