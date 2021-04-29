@@ -24,7 +24,7 @@ set t_vb=						"windows terminal配置"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-"Plug 'ycm-core/YouCompleteMe'				"代码补全
+Plug 'ycm-core/YouCompleteMe'				"代码补全
 Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
 Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
@@ -33,11 +33,9 @@ Plug 'jiangmiao/auto-pairs'				"自动补全、删除左右括号
 Plug 'Chiel92/vim-autoformat'				"格式化代码
 Plug 'Shougo/echodoc.vim'				"输入时代码提示"
 Plug 'vim-airline/vim-airline'				"vim状态栏"
-Plug 'boydos/emmet-vim'					"html插件"
 Plug 'puremourning/vimspector'				"调试"
-
-Plug 'godlygeek/tabular'				"markdown插件"
-Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/mathjax-support-for-mkdp'			"Markdown配置"
+Plug 'iamcco/markdown-preview.vim'
 			
 call plug#end()
 
@@ -45,7 +43,7 @@ call plug#end()
 "插件配置
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YCM配置
-let g:ycm_confirm_extra_conf=0				"关闭每次对.ycm_extra_conf.py的检查
+"let g:ycm_confirm_extra_conf=0				"关闭每次对.ycm_extra_conf.py的检查
 let g:ycm_key_invoke_completion = '<c-z>' 		"自动补全唤醒
 let g:ycm_min_num_identifier_candidate_chars = 10	"输入10个字符才唤醒符号补全
 let g:ycm_complete_in_strings = 1			"关闭string补全
@@ -53,6 +51,7 @@ let g:ycm_complete_in_comments = 0			"关闭注释补全
 let g:ycm_semantic_triggers =  {'c,cpp,python,java,go': ['re!\w{2}']}	"实时语义补全"
 let g:ycm_show_diagnostics_ui = 0					"关闭自动检查"
 set completeopt=menu,menuone						"关闭自动预览"
+
 
 "Ale配置
 let g:ale_completion_delay = 500
@@ -76,10 +75,10 @@ let g:ale_c_cc_options = '-Wall -std=gnu11'
 let g:ale_cpp_cc_options = '-Wall -std=c++11'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+let g:ale_python_pylint_options= '--extension-pkg-whitelist=PyQt5,cv2'
 
 nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
 nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
-
 
 "vim-gutentags配置
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']	"根目录
@@ -132,10 +131,3 @@ nmap <C-F8> <Plug>VimspectorToggleConditionalBreakpoint
 nmap <F9> <Plug>VimspectorRunToCursor	
 
 "markdown配置
-let g:vim_markdown_folding_disabled = 1  		"不折叠显示，默认是折叠显示，看个人习惯
-let g:vim_markdown_override_foldtext = 0  
-let g:vim_markdown_folding_level = 6    		"可折叠的级数，对应md的标题级别
-let g:vim_markdown_no_default_key_mappings = 1
-let g:vim_markdown_emphasis_multiline = 0
-set conceallevel=2
-let g:vim_markdown_frontmatter=1
