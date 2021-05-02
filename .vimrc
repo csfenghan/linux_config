@@ -24,7 +24,7 @@ set t_vb=						"windows terminal配置"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-Plug 'ycm-core/YouCompleteMe'				"代码补全
+"Plug 'ycm-core/YouCompleteMe'				"代码补全
 Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
 Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
@@ -43,7 +43,7 @@ call plug#end()
 "插件配置
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YCM配置
-"let g:ycm_confirm_extra_conf=0				"关闭每次对.ycm_extra_conf.py的检查
+let g:ycm_confirm_extra_conf=0				"关闭每次对.ycm_extra_conf.py的检查
 let g:ycm_key_invoke_completion = '<c-z>' 		"自动补全唤醒
 let g:ycm_min_num_identifier_candidate_chars = 10	"输入10个字符才唤醒符号补全
 let g:ycm_complete_in_strings = 1			"关闭string补全
