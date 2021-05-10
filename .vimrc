@@ -48,7 +48,7 @@ let g:ycm_key_invoke_completion = '<c-z>' 		"自动补全唤醒
 let g:ycm_min_num_identifier_candidate_chars = 10	"输入10个字符才唤醒符号补全
 let g:ycm_complete_in_strings = 1			"关闭string补全
 let g:ycm_complete_in_comments = 0			"关闭注释补全
-let g:ycm_semantic_triggers =  {'c,cpp,python,java,go': ['re!\w{2}']}	"实时语义补全"
+let g:ycm_semantic_triggers =  {'c,cpp,python,javascript,go': ['re!\w{2}']}	"实时语义补全"
 let g:ycm_show_diagnostics_ui = 0					"关闭自动检查"
 set completeopt=menu,menuone						"关闭自动预览"
 
@@ -129,5 +129,3 @@ nmap <F7> :call vimspector#Reset()<cr>
 nmap <F8> <Plug>VimspectorToggleBreakpoint
 nmap <C-F8> <Plug>VimspectorToggleConditionalBreakpoint	
 nmap <F9> <Plug>VimspectorRunToCursor	
-
-"markdown配置

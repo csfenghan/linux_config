@@ -6,14 +6,9 @@
 
 2. [universal-ctags](https://github.com/universal-ctags/ctags)  //ubuntu20之前的版 本只能通过下载源码编译的方式安装
 
-## 安装依赖
-
-    sudo apt update
-    sudo apt install clang cmake vim python3 python3-dev python3-pylint-common clang-format
-
-## 安装
+# 安装
     git clone git@github.com:csfenghan/vim_config.git
     cd vim_config && cp .vimrc ~ && cp -r .vim ~
-    
-    sudo apt install vim-addon-manager vim-youcompleteme
-    vim-addons install youcompleteme
+    进入vim运行PlugInstall安装插件
+    运行./install_ycm.sh安装ycm补全
+
