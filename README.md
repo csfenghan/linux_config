@@ -22,7 +22,7 @@
     cd ~/.vim/plugged
     git clone git@github.com:ycm-core/YouCompleteMe.git && cd YouCompleteMe
     git submodule update --init --recursive  #最好用代理
-    python3 install.py --clang-completer --ts-completer
+    python3 install.py --clang-completer --ts-completer  #这一步不要用代理，会报错
 
 安装后把 .ycm_extra_conf.py复制到工程目录下就可以补全C/C++、Python还有JavaScript了
 
