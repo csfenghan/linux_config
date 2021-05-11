@@ -33,9 +33,11 @@ Plug 'jiangmiao/auto-pairs'				"自动补全、删除左右括号
 Plug 'Chiel92/vim-autoformat'				"格式化代码
 Plug 'Shougo/echodoc.vim'				"输入时代码提示"
 Plug 'vim-airline/vim-airline'				"vim状态栏"
-Plug 'puremourning/vimspector'				"调试"
+"Plug 'puremourning/vimspector'				"调试"
 Plug 'iamcco/mathjax-support-for-mkdp'			"Markdown配置"
 Plug 'iamcco/markdown-preview.vim'
+Plug 'voldikss/vim-floaterm'				"终端显示"
+
 			
 call plug#end()
 
@@ -116,16 +118,20 @@ set cmdheight=2						"开启提示"
 let g:echodoc#enable_at_startup=1
 
 "vimspector配置
-nmap <F2> <Plug>VimspectorStepOver	
-nmap <F3> <Plug>VimspectorStepInto
-nmap <F4> <Plug>VimspectorStepOut
+"nmap <F2> <Plug>VimspectorStepOver	
+"nmap <F3> <Plug>VimspectorStepInto
+"nmap <F4> <Plug>VimspectorStepOut
 
-nmap <F5> <Plug>VimspectorContinue
-nmap <C-F5> <Plug>VimspectorRestart
-nmap <F6> <Plug>VimspectorPause
-nmap <C-F6> <Plug>VimspectorStop
-nmap <F7> :call vimspector#Reset()<cr>
+"nmap <F5> <Plug>VimspectorContinue
+"nmap <C-F5> <Plug>VimspectorRestart
+"nmap <F6> <Plug>VimspectorPause
+"nmap <C-F6> <Plug>VimspectorStop
+"nmap <F7> :call vimspector#Reset()<cr>
 
-nmap <F8> <Plug>VimspectorToggleBreakpoint
-nmap <C-F8> <Plug>VimspectorToggleConditionalBreakpoint	
-nmap <F9> <Plug>VimspectorRunToCursor	
+"nmap <F8> <Plug>VimspectorToggleBreakpoint
+"nmap <C-F8> <Plug>VimspectorToggleConditionalBreakpoint	
+"nmap <F9> <Plug>VimspectorRunToCursor	
+
+"floaterm配置
+let g:floaterm_keymap_toggle = '<F8>'
+let g:floaterm_keymap_kill= '<C-D>'
