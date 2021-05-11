@@ -6,9 +6,31 @@
 
 2. [universal-ctags](https://github.com/universal-ctags/ctags)  //ubuntu20之前的版 本只能通过下载源码编译的方式安装
 
+
 # 安装
     git clone git@github.com:csfenghan/vim_config.git
-    cd vim_config && cp .vimrc ~ && cp -r .vim ~
-    进入vim运行PlugInstall安装插件
-    运行./install_ycm.sh安装ycm补全
 
+    cd vim_config && cp .vimrc ~ && cp -r .vim ~
+
+    sudo apt install clang cmake vim python3 python3-dev python3-pylint-common clang-format  universal-ctags
+
+    进入vim运行PlugInstall安装插件
+
+## 安装YCM（方案一）
+删除.vimrc中Plug 'ycm-core/YouCompleteMe'的注释,然后
+
+    cd ~/.vim/plugged
+    git clone git@github.com:ycm-core/YouCompleteMe.git && cd YouCompleteMe
+    git submodule update --init --recursive  #最好用代理
+    python3 install.py --clang-completer --ts-completer
+
+安装后把 .ycm_extra_conf.py复制到工程目录下就可以补全C/C++、Python还有JavaScript了
+
+# 安装YCM（方案二）
+直接使用命令行安装即可
+
+    sudo apt install vim-addon-manager vim-youcompleteme 
+    vim-addons install youcompleteme
+
+安装后把 .ycm_extra_conf.py复制到工程目录下就可以补全了
+ps：这种方法安装的python补全无法检索python3安装的第三方库，有缺陷
