@@ -38,7 +38,7 @@ Plug 'vim-airline/vim-airline'				"vim状态栏"
 Plug 'iamcco/mathjax-support-for-mkdp'			"Markdown配置"
 Plug 'iamcco/markdown-preview.vim'
 Plug 'voldikss/vim-floaterm'				"终端显示"
-
+Plug 'mileszs/ack.vim'					"vim全局搜索"
 			
 call plug#end()
 
@@ -136,3 +136,8 @@ let g:echodoc#enable_at_startup=1
 "floaterm配置
 let g:floaterm_keymap_toggle = '<F8>'
 let g:floaterm_keymap_kill= '<C-D>'
+
+"ack.vim配置
+let g:ackhighlight = 1
+map <F4> :Ack 
+
