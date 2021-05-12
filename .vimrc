@@ -138,5 +138,5 @@ let g:floaterm_keymap_kill= '<C-D>'
 
 "ack.vim配置
 let g:ackhighlight = 1
-let g:ackprg = 'ag --nogroup --nocolor --column'
+map <F4> :Ack 
 
