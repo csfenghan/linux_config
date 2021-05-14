@@ -39,6 +39,7 @@ Plug 'iamcco/mathjax-support-for-mkdp'			"Markdown配置"
 Plug 'iamcco/markdown-preview.vim'
 Plug 'voldikss/vim-floaterm'				"终端显示"
 Plug 'mileszs/ack.vim'					"vim全局搜索"
+Plug 'mattn/emmet-vim'                                  "html插件"
 			
 call plug#end()
 
