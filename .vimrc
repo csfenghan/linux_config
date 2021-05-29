@@ -20,6 +20,11 @@ set encoding=utf-8
 set visualbell						"关闭windows terminal响铃
 set t_vb=						"windows terminal配置"
 
+"优先读取本地的vim配置
+if filereadable("./.workspace.vim")
+    source ./.workspace.vim
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " 以下是安装的vim插件
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
