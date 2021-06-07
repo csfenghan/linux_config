@@ -115,7 +115,7 @@ autocmd BufWrite *.c,*.cpp,*.py 			"设置发生保存事件时执行格式化
 noremap <F1> :Autoformat<CR>				"设置F1为格式化
 let g:autoformat_verbosemode=1
 
-let g:formatdef_clangformat_my= '"clang-format -style=\"{BasedOnStyle: llvm, IndentWidth: 8, ColumnLimit: 80}\""' 
+let g:formatdef_clangformat_my= '"clang-format -style=\"{BasedOnStyle: llvm, IndentWidth: 8, ColumnLimit: 80,IndentCaseLabels:true}\""' 
 let g:formatters_c = ['clangformat_my']
 let g:formatters_cpp = ['clangformat_my']
 
