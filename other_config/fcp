@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# 这是一个快速的将文件复制到服务器的脚本
+
+if [ $# -eq 0 ];then
+	echo "usage: " $0 "file1,file2,..."
+	exit
+fi
+
+user=fenghan
+addr=1.117.67.108
+shared_path=/home/fenghan/Public/
+
+for i in "$@"
+do
+	scp $i $user@$addr:$shared_path
+done
