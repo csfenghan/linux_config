@@ -74,17 +74,17 @@ let g:ale_echo_msg_error_str = 'Error'			"error和warning显示"
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-let g:ale_linters = {								
-			\   'cpp': ['g++','cppcheck'],
-			\   'c': ['gcc','cppcheck'],
-			\   'python': ['pylint'],
-			\}
+"let g:ale_linters = {								
+"			\   'cpp': ['g++','cppcheck'],
+"			\   'c': ['gcc','cppcheck'],
+"			\   'python': ['pylint'],
+"			\}
 
-let g:ale_c_cc_options = '-Wall -std=gnu11'
-let g:ale_cpp_cc_options = '-Wall -std=c++11'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-let g:ale_python_pylint_options= '--extension-pkg-whitelist=PyQt5,cv2'
+"let g:ale_c_cc_options = '-Wall -std=gnu11'
+"let g:ale_cpp_cc_options = '-Wall -std=c++11'
+"let g:ale_c_cppcheck_options = ''
+"let g:ale_cpp_cppcheck_options = ''
+"let g:ale_python_pylint_options= '--extension-pkg-whitelist=PyQt5,cv2'
 
 nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
 nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
