@@ -20,8 +20,10 @@
 
 ### 安装
 	sudo apt install trash-cli
+
 在.bashrc或者.zshrc中添加以提醒不要使用rm命令
 
-	alias rm='echo " This is not the command you are looking for.If you really want use rm simply prepend a slash"; false'
+    alias sudo='sudo '
+    alias rm='echo "Do not use the rm command,use the trash command instead"'
 
 
