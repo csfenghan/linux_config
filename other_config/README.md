@@ -14,7 +14,7 @@
 
 ### 安装
     sudo apt install tmux
-	cp ~/vim_config/other_config/.tmux.conf
+	cp ~/vim_config/other_config/.tmux.conf ~/
 
 ## 3.trash-cli配置
 
