@@ -1,5 +1,7 @@
 # vim基本配置和插件安装方法
 
+[其他插件安装方法及配置](./other_config/README.md)
+
 ## 依赖
 
 1. [vim8以上版本](https://github.com/vim/vim)   //ubuntu20以前版本只能通过源码编译安装
