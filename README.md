@@ -46,3 +46,12 @@ example
     cp ~/vim_config/plug_config/.ycm_extra_conf.py .
 
 使用时在.ycm_extra_conf.py文件添加所包含的头文件路径以及编译时要使用的选项，就可以实现c/cpp文件的自动补全，在.workspace.vim添加对应的编译器的编译选项，就可以对文件进行实时语法检查
+
+## 其他
+### neovim配置
+neovim可以直接使用vim的配置，建立软连接即可
+
+    ln -s ~/.vim .config/nvim
+    ln -s ~/.vimrc .config/nvim/init.vim
+    python3 -m pip install --user --upgrade pynvim	# 开启python3支持
+
