@@ -14,7 +14,7 @@
 
     cd vim_config && cp .vimrc ~ && cp -r .vim ~
 
-    sudo apt install clang cmake vim python3 python3-dev python3-pylint-common clang-format  universal-ctags
+    sudo apt install clang cmake vim python3 python3-dev python3-pylint-common clang-format  universal-ctags ack
 
     进入vim运行PlugInstall安装插件
 
