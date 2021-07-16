@@ -10,6 +10,7 @@ set backspace=2					"可以删除任何字符
 set tabstop=8					"设置tab长度
 set shiftwidth=8				"缩进空格数4
 set t_Co=256					"解决tmux下颜色过深
+colorscheme zellner				"解决tmux下neovim颜色问题
 
 highlight Visual term=bold cterm=bold ctermbg=Red ctermfg=yellow	"设置Visual模式下选中的颜色
 
@@ -103,6 +104,8 @@ if !isdirectory(s:vim_tags)				"检测不到~/.cache.tags就创建"
 
 "NERDTree配置
 map <C-n> :NERDTreeToggle<CR>				"打开目录
+autocmd vimenter * NERDTree                             "进入vim时自动打开
+let NERDTreeWinSize=10
 
 "LeaderF配置
 let g:Lf_ShortcutF = '<C-P>'				"使用ctrl+p模糊搜索
