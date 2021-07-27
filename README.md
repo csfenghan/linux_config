@@ -2,6 +2,14 @@
 
 [其他插件安装方法及配置](./other_config/README.md)
 
+## 功能
+1. C、Cpp、Python代码补全
+2. 实时语法检查
+3. 代码跳转
+4. 目录管理
+5. 快速跳转
+6. 其它
+
 ## 依赖
 
 1. [vim8以上版本](https://github.com/vim/vim)   //ubuntu20以前版本只能通过源码编译安装
