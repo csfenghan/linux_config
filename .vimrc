@@ -9,6 +9,7 @@ set cindent					"使用C/C++的缩进
 set backspace=2					"可以删除任何字符
 set tabstop=8					"设置tab长度
 set shiftwidth=8				"缩进空格数4
+set expandtab					"用空格代替tab
 set t_Co=256					"解决tmux下颜色过深
 colorscheme zellner				"解决tmux下neovim颜色问题
 
