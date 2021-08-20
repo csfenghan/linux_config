@@ -22,11 +22,6 @@ set encoding=utf-8
 set visualbell						"关闭windows terminal响铃
 set t_vb=						"windows terminal配置"
 
-"优先读取本地的vim配置
-if filereadable("./.workspace.vim")
-    source ./.workspace.vim
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " 以下是安装的vim插件
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -76,17 +71,17 @@ let g:ale_echo_msg_error_str = 'Error'			"error和warning显示"
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-"let g:ale_linters = {								
-"			\   'cpp': ['g++','cppcheck'],
-"			\   'c': ['gcc','cppcheck'],
-"			\   'python': ['pylint'],
-"			\}
+let g:ale_linters = {								
+			\   'cpp': ['g++','cppcheck'],
+			\   'c': ['gcc','cppcheck'],
+			\   'python': ['pylint'],
+			\}
 
-"let g:ale_c_cc_options = '-Wall -std=gnu11'
-"let g:ale_cpp_cc_options = '-Wall -std=c++11'
-"let g:ale_c_cppcheck_options = ''
-"let g:ale_cpp_cppcheck_options = ''
-"let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2'
+let g:ale_c_cc_options = '-Wall -std=gnu11'
+let g:ale_cpp_cc_options = '-Wall -std=c++11'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2'
 
 nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
 nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
@@ -163,4 +158,10 @@ let g:floaterm_keymap_kill= '<C-D>'
 "ack.vim配置
 let g:ackhighlight = 1
 map <F4> :Ack 
+
+"优先读取本地的vim配置
+if filereadable("./.workspace.vim")
+    source ./.workspace.vim
+endif
+
 
