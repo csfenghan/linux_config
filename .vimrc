@@ -7,8 +7,8 @@ syntax on					"语法高亮
 set autoindent					"自动缩进
 set cindent					"使用C/C++的缩进
 set backspace=2					"可以删除任何字符
-set tabstop=8					"设置tab长度
-set shiftwidth=8				"缩进空格数4
+set tabstop=4					"设置tab长度
+set shiftwidth=4				"缩进空格数4
 set expandtab					"用空格代替tab
 set t_Co=256					"解决tmux下颜色过深
 colorscheme zellner				"解决tmux下neovim颜色问题
@@ -125,7 +125,7 @@ autocmd BufWrite *.c,*.cpp,*.py 			"设置发生保存事件时执行格式化
 noremap <F1> :Autoformat<CR>				"设置F1为格式化
 let g:autoformat_verbosemode=1
 
-let g:formatdef_clangformat_my= '"clang-format -style=\"{BasedOnStyle: llvm, IndentWidth: 8, ColumnLimit: 80}\""' 
+let g:formatdef_clangformat_my= '"clang-format -style=\"{BasedOnStyle: llvm, IndentWidth: 4, ColumnLimit: 100}\""' 
 let g:formatters_c = ['clangformat_my']
 let g:formatters_cpp = ['clangformat_my']
 
