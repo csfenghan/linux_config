@@ -100,8 +100,6 @@ if !isdirectory(s:vim_tags)				"检测不到~/.cache.tags就创建"
 
 "NERDTree配置
 map <C-n> :NERDTreeToggle<CR>				"打开目录
-autocmd vimenter * NERDTree                             "进入vim时自动打开
-let NERDTreeWinSize=10
 
 "LeaderF配置
 let g:Lf_ShortcutF = '<C-P>'				"使用ctrl+p模糊搜索
