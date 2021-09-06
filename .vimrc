@@ -101,6 +101,10 @@ if !isdirectory(s:vim_tags)				"检测不到~/.cache.tags就创建"
 "NERDTree配置
 map <C-n> :NERDTreeToggle<CR>				"打开目录
 
+"auto-pairs
+let g:AutoPairsMultilineClose = 0   "启用跳出多行括号对，默认为1，为0则只能跳出同一行的括号。
+let g:AutoPairsMapCR = 0            "把ENTER键映射为换行并缩进，默认为1。
+
 "LeaderF配置
 let g:Lf_ShortcutF = '<C-P>'				"使用ctrl+p模糊搜索
 map <C-M> :LeaderfFunction!<cr>				"使用查看函数列表"
