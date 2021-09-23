@@ -43,6 +43,8 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'voldikss/vim-floaterm'				"终端显示"
 Plug 'mileszs/ack.vim'					"vim全局搜索"
 Plug 'mattn/emmet-vim'                                  "html插件"
+
+Plug 'hzchirs/vim-material'             "vim配色配置"
 			
 call plug#end()
 
@@ -161,6 +163,14 @@ let g:floaterm_keymap_kill= '<C-D>'
 "ack.vim配置
 let g:ackhighlight = 1
 map <F4> :Ack 
+
+"vim-material配置
+"Dark
+set background=dark
+colorscheme vim-material
+if exists("syntax_on")
+    syntax reset
+endif
 
 "优先读取本地的vim配置
 if filereadable("./.workspace.vim")
