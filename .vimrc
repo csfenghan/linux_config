@@ -11,6 +11,7 @@ set tabstop=4					"设置tab长度
 set shiftwidth=4				"缩进空格数4
 set expandtab					"用空格代替tab
 set t_Co=256					"解决tmux下颜色过深
+set softtabstop=4               "使set expandtab情况下，backspace可以回退tab"
 colorscheme zellner				"解决tmux下neovim颜色问题
 
 highlight Visual term=bold cterm=bold ctermbg=Red ctermfg=yellow	"设置Visual模式下选中的颜色
