@@ -1,28 +1,4 @@
 "需要安装universal_ctags,build-essential cmake vim-nox python3-dev,vim要高于8.0，g++要高于8.0，主要需要注意的是YCM的安装
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 以下是vim基础配置
-""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nu						"显示行号
-syntax on					"语法高亮
-set autoindent					"自动缩进
-set cindent					"使用C/C++的缩进
-set backspace=2					"可以删除任何字符
-set tabstop=4					"设置tab长度
-set shiftwidth=4				"缩进空格数4
-set expandtab					"用空格代替tab
-set t_Co=256					"解决tmux下颜色过深
-set softtabstop=4               "使set expandtab情况下，backspace可以回退tab"
-colorscheme zellner				"解决tmux下neovim颜色问题
-
-highlight Visual term=bold cterm=bold ctermbg=Red ctermfg=yellow	"设置Visual模式下选中的颜色
-
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936	"设置中文字体
-set termencoding=utf-8
-set encoding=utf-8
-
-set visualbell						"关闭windows terminal响铃
-set t_vb=						"windows terminal配置"
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " 以下是安装的vim插件
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,7 +36,7 @@ let g:ycm_complete_in_comments = 0			"关闭注释补全
 let g:ycm_semantic_triggers =  {'c,cpp,python,javascript,go': ['re!\w{2}']}	"实时语义补全"
 let g:ycm_show_diagnostics_ui = 0					"关闭自动检查"
 set completeopt=menu,menuone						"关闭自动预览"
-
+let g:ycm_add_preview_to_completeopt = 0
 
 "Ale配置
 let g:ale_completion_delay = 500
@@ -171,6 +147,33 @@ colorscheme vim-material
 if exists("syntax_on")
     syntax reset
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 以下是vim基础配置
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nu						"显示行号
+syntax on					"语法高亮
+set autoindent					"自动缩进
+set cindent					"使用C/C++的缩进
+set backspace=2					"可以删除任何字符
+set tabstop=4					"设置tab长度
+set shiftwidth=4				"缩进空格数4
+set expandtab					"用空格代替tab
+set t_Co=256					"解决tmux下颜色过深
+set softtabstop=4               "使set expandtab情况下，backspace可以回退tab"
+colorscheme zellner				"解决tmux下neovim颜色问题
+
+" 默认彩色屏幕配置,如果要使用水墨屏还需要做修改
+highlight Visual term=bold cterm=bold ctermbg=grey ctermfg=yellow	"设置Visual模式下选中的颜色
+highlight PMenu ctermfg=black ctermbg=gray guifg=black guibg=black
+highlight PMenuSel ctermfg=blue ctermbg=darkgrey guifg=darkgrey guibg=black
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936	"设置中文字体
+set termencoding=utf-8
+set encoding=utf-8
+
+set visualbell						"关闭windows terminal响铃
+set t_vb=						"windows terminal配置"
 
 "优先读取本地的vim配置
 if filereadable("./.workspace.vim")
