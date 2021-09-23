@@ -153,6 +153,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 set nu						"显示行号
 syntax on					"语法高亮
+syntax reset
 set autoindent					"自动缩进
 set cindent					"使用C/C++的缩进
 set backspace=2					"可以删除任何字符
