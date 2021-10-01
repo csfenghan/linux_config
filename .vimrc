@@ -62,7 +62,7 @@ let g:ale_cpp_cc_options = '-Wall -std=c++11'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2'
-let g:ale_cuda_nvcc_options = '-Wall -std=c++11'
+let g:ale_cuda_nvcc_options = '-std=c++11'
 
 nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
 nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
