@@ -28,6 +28,7 @@ call plug#end()
 "插件配置
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YCM配置
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0				"关闭每次对.ycm_extra_conf.py的检查
 let g:ycm_key_invoke_completion = '<c-z>' 		"自动补全唤醒
 let g:ycm_min_num_identifier_candidate_chars = 10	"输入10个字符才唤醒符号补全
