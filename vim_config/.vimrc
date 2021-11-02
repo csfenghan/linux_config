@@ -4,13 +4,14 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
-"Plug 'ycm-core/YouCompleteMe'				"代码补全
+Plug 'ycm-core/YouCompleteMe'				"代码补全
 Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
 Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
 Plug 'Yggdroot/LeaderF'					"模糊查找、函数列表
 Plug 'jiangmiao/auto-pairs'				"自动补全、删除左右括号
-Plug 'Chiel92/vim-autoformat'				"格式化代码
+Plug 'Raimondi/delimitMate'             "自动补全括号"
+"Plug 'Chiel92/vim-autoformat'				"格式化代码
 Plug 'Shougo/echodoc.vim'				"输入时代码提示"
 Plug 'vim-airline/vim-airline'				"vim状态栏"
 "Plug 'puremourning/vimspector'				"调试"
@@ -19,8 +20,7 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'voldikss/vim-floaterm'				"终端显示"
 Plug 'mileszs/ack.vim'					"vim全局搜索"
 Plug 'mattn/emmet-vim'                                  "html插件"
-
-Plug 'hzchirs/vim-material'             "vim配色配置"
+Plug 'altercation/vim-colors-solarized'
 			
 call plug#end()
 
@@ -62,7 +62,7 @@ let g:ale_c_cc_options = '-Wall -std=gnu11'
 let g:ale_cpp_cc_options = '-Wall -std=c++11'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
-let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2'
+let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2,torch'
 let g:ale_cuda_nvcc_options = '-std=c++11'
 
 nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
@@ -143,13 +143,7 @@ let g:floaterm_keymap_kill= '<C-D>'
 let g:ackhighlight = 1
 map <F4> :Ack 
 
-"vim-material配置
-"Dark
-set background=dark
-colorscheme vim-material
-if exists("syntax_on")
-    syntax reset
-endif
+"配色设置
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " 以下是vim基础配置
@@ -165,12 +159,8 @@ set shiftwidth=4				"缩进空格数4
 set expandtab					"用空格代替tab
 set t_Co=256					"解决tmux下颜色过深
 set softtabstop=4               "使set expandtab情况下，backspace可以回退tab"
-colorscheme zellner				"解决tmux下neovim颜色问题
 
 " 默认彩色屏幕配置,如果要使用水墨屏还需要做修改
-highlight Visual term=bold cterm=bold ctermbg=grey ctermfg=yellow	"设置Visual模式下选中的颜色
-highlight PMenu ctermfg=black ctermbg=gray guifg=black guibg=black
-highlight PMenuSel ctermfg=blue ctermbg=darkgrey guifg=darkgrey guibg=black
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936	"设置中文字体
 set termencoding=utf-8
@@ -184,4 +174,21 @@ if filereadable("./.workspace.vim")
     source ./.workspace.vim
 endif
 
-
+" gvim和vim配色配置
+if has('gui_running')
+    set guioptions-=T  " no toolbar
+    set guioptions-=m  " no menu
+    set background=dark
+    colorscheme solarized
+    "set lines=60 columns=108 linespace=0
+    if has('gui_win32')
+        set guifont=DejaVu_Sans_Mono:h10:cANSI
+    else
+        set guifont=Monospace\ Regular\ 24
+    endif
+else
+    colorscheme zellner
+    highlight Visual term=bold cterm=bold ctermbg=grey ctermfg=yellow	"设置Visual模式下选中的颜色
+    highlight PMenu ctermfg=black ctermbg=gray guifg=black guibg=black
+    highlight PMenuSel ctermfg=blue ctermbg=darkgrey guifg=darkgrey guibg=black
+endif
