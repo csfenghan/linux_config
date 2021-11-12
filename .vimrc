@@ -10,7 +10,8 @@ Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
 Plug 'Yggdroot/LeaderF'					"模糊查找、函数列表
 Plug 'jiangmiao/auto-pairs'				"自动补全、删除左右括号
-Plug 'Chiel92/vim-autoformat'				"格式化代码
+Plug 'Raimondi/delimitMate'             "自动补全括号"
+"Plug 'Chiel92/vim-autoformat'				"格式化代码
 Plug 'Shougo/echodoc.vim'				"输入时代码提示"
 Plug 'vim-airline/vim-airline'				"vim状态栏"
 "Plug 'puremourning/vimspector'				"调试"
