@@ -5,7 +5,7 @@
 call plug#begin('~/.vim/plugged')
 
 "Plug 'ycm-core/YouCompleteMe'				"代码补全
-"Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
+Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
 "Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
 Plug 'Yggdroot/LeaderF'					"模糊查找、函数列表
@@ -22,6 +22,8 @@ Plug 'mileszs/ack.vim'					"vim全局搜索"
 Plug 'mattn/emmet-vim'                                  "html插件"
 Plug 'altercation/vim-colors-solarized'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}     "coc跳转"
+Plug 'airblade/vim-gitgutter'           "git插件"
+
 			
 call plug#end()
 
@@ -245,7 +247,9 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-
+" git插件
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 " 以下是vim基础配置
 """"""""""""""""""""""""""""""""""""""""""""""""""""

@@ -17,9 +17,17 @@
 
   进入vim，运行`:CocInstall coc-clangd`安装对应的C/C++插件，然后安装`clangd`命令（或者进入vim后会自动安装）
 
-  运行`:CocInstall coc-pyright`安装python插件
+  运行`:CocInstall coc-jedi`安装python插件
 
-  安装完成后其实
+  安装完成后其实就可以补全和动态检查了，不需要YCM也可以
+  
++ 其他插件
+
+  1. `coc-cmake`
+  2. `coc-json`
+  3. `coc-git`
+
+  
 
 ### 方案二：安装YCM
 
