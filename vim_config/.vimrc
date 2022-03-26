@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 "Plug 'ycm-core/YouCompleteMe'				"代码补全
 Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
-"Plug 'dense-analysis/ale'				"动态检查"
+Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
 Plug 'Yggdroot/LeaderF'					"模糊查找、函数列表
 Plug 'jiangmiao/auto-pairs'				"自动补全、删除左右括号
@@ -58,7 +58,7 @@ let g:ale_linters = {
 			\   'cpp': ['g++','cppcheck'],
 			\   'c': ['gcc','cppcheck'],
 			\   'python': ['pylint'],
-            \   'cuda': ['nvcc'],
+            \   'verilog': ['iverilog'],
 			\}
 
 let g:ale_c_cc_options = '-Wall -std=gnu11'
@@ -67,6 +67,10 @@ let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2,torch'
 let g:ale_cuda_nvcc_options = '-std=c++11'
+
+" 只检查verilog文件
+au FileType systemverilog
+    \ let g:ale_linters = {'systemverilog' : ['verilator'],}
 
 nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
 nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
@@ -185,8 +189,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
  
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gc <Plug>(coc-declaration)
