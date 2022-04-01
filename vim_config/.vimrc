@@ -1,25 +1,24 @@
-"需要安装universal_ctags,build-essential cmake vim-nox python3-dev,vim要高于8.0，g++要高于8.0，主要需要注意的是YCM的安装
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
-" 以下是安装的vim插件
+"  vim插件
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
 
 "Plug 'ycm-core/YouCompleteMe'				"代码补全
 Plug 'ludovicchabant/vim-gutentags'			"自动生成tags,需要安装universal_ctags
-Plug 'dense-analysis/ale'				"动态检查"
+"Plug 'dense-analysis/ale'				"动态检查"
 Plug 'preservim/nerdtree'				"目录树
 Plug 'Yggdroot/LeaderF'					"模糊查找、函数列表
 Plug 'jiangmiao/auto-pairs'				"自动补全、删除左右括号
 Plug 'Raimondi/delimitMate'             "自动补全括号"
 "Plug 'Chiel92/vim-autoformat'				"格式化代码
-Plug 'Shougo/echodoc.vim'				"输入时代码提示"
+"Plug 'Shougo/echodoc.vim'				"输入时代码提示"
 Plug 'vim-airline/vim-airline'				"vim状态栏"
 "Plug 'puremourning/vimspector'				"调试"
-Plug 'iamcco/mathjax-support-for-mkdp'			"Markdown配置"
-Plug 'iamcco/markdown-preview.vim'
+"Plug 'iamcco/mathjax-support-for-mkdp'			"Markdown配置"
+"Plug 'iamcco/markdown-preview.vim'
 Plug 'voldikss/vim-floaterm'				"终端显示"
 Plug 'mileszs/ack.vim'					"vim全局搜索"
-Plug 'mattn/emmet-vim'                                  "html插件"
+"Plug 'mattn/emmet-vim'                                  "html插件"
 Plug 'altercation/vim-colors-solarized'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}     "coc跳转"
 Plug 'airblade/vim-gitgutter'           "git插件"
@@ -28,7 +27,7 @@ Plug 'airblade/vim-gitgutter'           "git插件"
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
-"插件配置
+"  插件配置
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YCM配置
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -148,7 +147,7 @@ let g:floaterm_keymap_kill= '<C-D>'
 
 "ack.vim配置
 let g:ackhighlight = 1
-map <F4> :Ack 
+"map <F4> :Ack 
 
 " coc配置
 " if hidden is not set, TextEdit might fail.
@@ -189,8 +188,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
  
 " Use `[g` and `]g` to navigate diagnostics
-"nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gc <Plug>(coc-declaration)
@@ -270,7 +269,6 @@ set t_Co=256					"解决tmux下颜色过深
 set softtabstop=4               "使set expandtab情况下，backspace可以回退tab"
 
 " 默认彩色屏幕配置,如果要使用水墨屏还需要做修改
-
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936	"设置中文字体
 set termencoding=utf-8
 set encoding=utf-8
@@ -291,7 +289,9 @@ if has('gui_running')
         set guifont=Monospace\ Regular\ 24
     endif
 else
-    colorscheme zellner
+    "colorscheme zellner
+    colorscheme solarized
+    set background=dark
     highlight Visual term=bold cterm=bold ctermbg=grey ctermfg=yellow	"设置Visual模式下选中的颜色
     highlight PMenu ctermfg=black ctermbg=gray guifg=black guibg=black
     highlight PMenuSel ctermfg=blue ctermbg=darkgrey guifg=darkgrey guibg=black
