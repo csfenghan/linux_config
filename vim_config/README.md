@@ -14,11 +14,11 @@ coc对node的版本有所要求，安装时请注意
 
 一键配置
 
-`CocInstall coc-clangd coc-pyright coc-snippets coc-pairs coc-json coc-cmake coc-git`
+`CocInstall coc-clangd coc-json coc-cmake coc-git coc-pairs `
 
 ## 问题
 
-1. 显示neovim不支持python3‘
+1. 显示neovim不支持python3
 
    `pip3 install --user --upgrade pynvim`
 

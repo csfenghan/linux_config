@@ -281,5 +281,3 @@ nnoremap   <silent>   <F10>    :FloatermNext<CR>
 tnoremap   <silent>   <F10>    <C-\><C-n>:FloatermNext<CR>
 nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>    <C-\><C-n>:FloatermToggle<CR>
-
-""""""""""" end
