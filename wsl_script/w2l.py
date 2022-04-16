@@ -1,6 +1,7 @@
 # 功能：从windows粘贴板中复制文件到目标地址
 
 from PyQt5.QtWidgets import QApplication
+import argparse
 import subprocess
 import sys
 import os
@@ -22,6 +23,11 @@ if __name__ == "__main__":
     if (len(sys.argv) > 2):
         print("Usage: {} [dest]".format(sys.argv[0]))
         exit(0)
+    elif (len(sys.argv) == 2 and sys.argv[1] == "-h"):
+        print("Function:Paste file from windows clipboard to destination path")
+        print("Usage: {} [destination]".format(sys.argv[0]))
+        exit(0)
+
     dest_path = os.getcwd() if len(sys.argv) == 1 else sys.argv[1]
 
     app = QApplication([])
