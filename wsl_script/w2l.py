@@ -52,7 +52,7 @@ if __name__ == "__main__":
 
             source = "\"" + path + "\""
             subprocess.run(
-                    ["powershell", "Copy-Item", source, dest_path]
+                    ["powershell", "Copy-Item", "-Recurse", source, dest_path]
                     )
             print("powershell Copy-Item {} {}".format(source, dest_path))
     else:
