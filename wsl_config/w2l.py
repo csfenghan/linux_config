@@ -7,11 +7,6 @@ import os
 
 def parseDataType(data):
     # 判断粘贴板数据类型
-    # return:
-    #     url:文件
-    #     html:html数据
-    #     text:文本数据
-    #     image:图片
     if data.hasImage():
         return "image"
     elif data.hasHtml():
@@ -34,28 +29,26 @@ if __name__ == "__main__":
     data = clipboard.mimeData()
 
     # 根据粘贴板数据类型复制数据
+    #   windows地址举例:file:///D:/2.txt，有效地址D:/2.txt
+    #   wsl地址举例:file://wsl.localhost/Ubuntu-20.04/home/fenghan/temp/test.py，有效地址//wsl.localhost/Ubuntu-20.04/home/fenghan/temp/test.py
     dType = parseDataType(data)
     if dType == "url":
-        url = data.text()
-        if (url[0:8] == "file:///"):        # windows文件
-            url = url[8:]
-        elif (url[0:7] == "file://"):       # wsl文件
-            url = url[5:]
-        else:
-            print("Unknow url type:{}".format(url))
-            exit(0)
+        urls = data.urls()
+        text = data.text().strip().split("\n")
+        num = len(urls)
+        for i in range(num):
+            path = text[i]
+            start = path.find("//")
+            if (path[start + 2] == '/'):        # windows地址
+                path = path[start + 3:]
+            else:
+                path = path[start + 2:]
 
-        source = "\"" + url + "\""
-        subprocess.run(
-                ["powershell", "Copy-Item", source, dest_path]
-                )
-        print("powershell Copy-Item {} {}".format(source, dest_path))
-
-    elif dType == "text" or dType == "html":
-        pass
-    elif dType == "image":
-        pass
+            source = "\"" + path + "\""
+            subprocess.run(
+                    ["powershell", "Copy-Item", source, dest_path]
+                    )
+            print("powershell Copy-Item {} {}".format(source, dest_path))
     else:
-        pass
-    exit(0) 
+        print("Unsupport data type:{}".format(dType))
 
