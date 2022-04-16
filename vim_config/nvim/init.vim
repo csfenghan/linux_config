@@ -18,6 +18,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab                                               "空格代替tab
 set softtabstop=4                                           "使用空格代替tab时，backspace可以回退tab
+set backspace=2                                             "可以删除任意字符
 
 set background=dark
 colorscheme solarized
@@ -281,3 +282,5 @@ nnoremap   <silent>   <F10>    :FloatermNext<CR>
 tnoremap   <silent>   <F10>    <C-\><C-n>:FloatermNext<CR>
 nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>    <C-\><C-n>:FloatermToggle<CR>
+
+""""""""""" end

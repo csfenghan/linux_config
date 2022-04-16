@@ -20,6 +20,6 @@ alias unproxy='
 '
 alias sudo='sudo '
 alias rm='echo "Do not use the rm command,use the trash command instead"'
-alias wwl='w2l.py "'
+alias w2l='python.exe ~/scripts/w2l.py '
 
 export PATH=$PATH:/home/fenghan/scripts

@@ -1,44 +1,61 @@
-#!/bin/python3
+# 功能：从windows粘贴板中复制文件到目标地址
+
+from PyQt5.QtWidgets import QApplication
 import subprocess
 import sys
 import os
-import re
 
-def parserWinPath(mount_path, path):
-    # 解析windows地址，返回linux对应挂载点的地址
-    path = path.split('\\')
-
-    if (len(path) == 0) or not re.match('[C-Z]+:$', path[0].strip()):
-        raise IOError("Error: Address rormat error, cannot recognize address {}!".format(path[0]))
-
-    result = os.path.join(mount_path, str.lower(path[0].strip()[0]))
-    for p in path[1:]:
-        result = os.path.join(result, p)
-
-    return result
-    
-
-mount_path = "/mnt"
-if __name__ == "__main__":
-    if (len(sys.argv) == 2):
-        p1, p2 = sys.argv[1], '.'
-    elif (len(sys.argv) == 3):
-        p1, p2 = sys.argv[1], sys.argv[2]
+def parseDataType(data):
+    # 判断粘贴板数据类型
+    # return:
+    #     url:文件
+    #     html:html数据
+    #     text:文本数据
+    #     image:图片
+    if data.hasImage():
+        return "image"
+    elif data.hasHtml():
+        return "html"
+    elif data.hasUrls() and data.hasText():
+        return "url"
+    elif data.hasText():
+        return "text"
     else:
-        print("Usage: {} source dest".format(sys.argv[0]))
+        return "unknow"
+
+if __name__ == "__main__":
+    if (len(sys.argv) > 2):
+        print("Usage: {} [dest]".format(sys.argv[0]))
         exit(0)
+    dest_path = os.getcwd() if len(sys.argv) == 1 else sys.argv[1]
 
-    # 解析地址
-    try:
-        source_path = parserWinPath(mount_path, p1)
-        if (not os.path.exists(source_path)):
-            raise IOError("Error: File not exist!")
+    app = QApplication([])
+    clipboard = app.clipboard()
+    data = clipboard.mimeData()
 
-        # 复制
+    # 根据粘贴板数据类型复制数据
+    dType = parseDataType(data)
+    if dType == "url":
+        url = data.text()
+        if (url[0:8] == "file:///"):        # windows文件
+            url = url[8:]
+        elif (url[0:7] == "file://"):       # wsl文件
+            url = url[5:]
+        else:
+            print("Unknow url type:{}".format(url))
+            exit(0)
+
+        source = "\"" + url + "\""
         subprocess.run(
-                ["cp", "-r", source_path, p2]
+                ["powershell", "Copy-Item", source, dest_path]
                 )
-        print("Copy successed!")
-    except IOError as err:
-        print(err)
+        print("powershell Copy-Item {} {}".format(source, dest_path))
+
+    elif dType == "text" or dType == "html":
+        pass
+    elif dType == "image":
+        pass
+    else:
+        pass
+    exit(0) 
 
