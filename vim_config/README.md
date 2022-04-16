@@ -14,7 +14,7 @@ coc对node的版本有所要求，安装时请注意
 
 一键配置
 
-`CocInstall coc-clangd coc-json coc-cmake coc-git coc-pairs `
+`CocInstall coc-clangd coc-pyright coc-json coc-cmake coc-git coc-pairs `
 
 ## 问题
 
