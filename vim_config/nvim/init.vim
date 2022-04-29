@@ -3,6 +3,7 @@
 """""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}         "coc插件（补全、跳转、语法检查）
+    Plug 'dense-analysis/ale'				                "动态检查
     Plug 'Yggdroot/LeaderF'                                 "文件、函数管理
     Plug 'voldikss/vim-floaterm'                            "内置终端
     Plug 'vim-airline/vim-airline'                          "vim状态栏
@@ -20,7 +21,8 @@ set expandtab                                               "空格代替tab
 set softtabstop=4                                           "使用空格代替tab时，backspace可以回退tab
 set backspace=2                                             "可以删除任意字符
 
-set background=dark
+"set background=dark
+set background=light
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""
@@ -201,8 +203,42 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 """"""""""" end
 
+"Ale配置
+"""""""""""""start
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_linters_explicit = 1
+
+let g:ale_sign_error = '✗'				"error显示的符号"
+let g:ale_sign_warning='-'
+let g:ale_echo_msg_error_str = 'Error'			"error和warning显示"
+let g:ale_echo_msg_warning_str = 'Warning'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+let g:ale_linters = {								
+			\   'cpp': ['g++','cppcheck'],
+			\   'c': ['gcc','cppcheck'],
+			\   'python': ['pylint'],
+			\}
+
+let g:ale_c_cc_options = '-Wall -std=gnu11'
+let g:ale_cpp_cc_options = '-Wall -std=c++11'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+let g:ale_python_pylint_options= '--errors-only --extension-pkg-whitelist=PyQt5,cv2,torch'
+nmap sp <Plug>(ale_previous_wrap)			"sp跳到前一个错误
+nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
+"""""""""""""end
+
 " LeaderF
 """""""""""" start
+" ignore files
+let g:Lf_WildIgnore = {
+        \ 'dir':['build', '.git'],
+        \ 'file':['*.o']
+      \ }
+
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
