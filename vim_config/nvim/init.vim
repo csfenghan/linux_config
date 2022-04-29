@@ -13,6 +13,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""
 "  vim配置
 """""""""""""""""""""""""""""""""""""""
+set jumpoptions+=stack
 set nu	
 syntax on
 set tabstop=4
