@@ -8,6 +8,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'voldikss/vim-floaterm'                            "内置终端
     Plug 'vim-airline/vim-airline'                          "vim状态栏
     Plug 'altercation/vim-colors-solarized'                 "vim主题
+    Plug 'ap/vim-buftabline'                                "vim buffer栏显示
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -22,8 +23,8 @@ set expandtab                                               "空格代替tab
 set softtabstop=4                                           "使用空格代替tab时，backspace可以回退tab
 set backspace=2                                             "可以删除任意字符
 
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""
@@ -96,6 +97,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gc <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -237,7 +239,7 @@ nmap sn <Plug>(ale_next_wrap)				"sn跳到下一个错误
 " ignore files
 let g:Lf_WildIgnore = {
         \ 'dir':['build', '.git'],
-        \ 'file':['*.o']
+        \ 'file':['*.o', '*.a', '*.so']
       \ }
 
 " don't show the help in normal mode
@@ -321,3 +323,11 @@ nnoremap   <silent>   <F12>   :FloatermToggle<CR>
 tnoremap   <silent>   <F12>    <C-\><C-n>:FloatermToggle<CR>
 
 """"""""""" end
+
+" buffer显示
+""""""""""""""""""""""""""""" start
+nnoremap <silent> <C-N> :bn<CR>
+nnoremap <silent> <C-P> :bp<CR>
+autocmd VimEnter * :clearjumps
+
+"""""""""""""""""""""""""""" end
