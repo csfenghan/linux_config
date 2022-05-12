@@ -8,7 +8,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'voldikss/vim-floaterm'                            "内置终端
     Plug 'vim-airline/vim-airline'                          "vim状态栏
     Plug 'altercation/vim-colors-solarized'                 "vim主题
-    Plug 'ap/vim-buftabline'                                "vim buffer栏显示
+    Plug 'ap/vim-buftabline'                                "buffer状态栏
+    Plug 'preservim/nerdtree'                               "目录树
+    Plug 'csfenghan/vim-slsession'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -22,9 +24,12 @@ set shiftwidth=4
 set expandtab                                               "空格代替tab
 set softtabstop=4                                           "使用空格代替tab时，backspace可以回退tab
 set backspace=2                                             "可以删除任意字符
+set encoding=utf-8
+set fileencodings=utf-8,ucs-bom,cp936,gbk,gbk2312
+set fileencoding=utf-8
 
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""
@@ -122,8 +127,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -248,17 +253,19 @@ let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 " popup mode
-let g:Lf_WindowPosition = 'popup'
+let g:Lf_WindowPosition = 'left'
+let g:Lf_PopupWidth = 0.8
+let g:Lf_PopupHeight = 0.95
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-noremap <leader>fu :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
+let g:Lf_ShortcutF = "<leader>f"
+noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+"noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+"noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>u :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
 
 "noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 "noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -269,11 +276,11 @@ noremap go :<C-U>Leaderf! rg --recall<CR>
 " should use `Leaderf gtags --update` first
 let g:Lf_GtagsAutoGenerate = 0
 let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+"noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+"noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+"noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+"noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+"noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 """""""""""" end
 
 " Coc插件配置
@@ -329,5 +336,16 @@ tnoremap   <silent>   <F12>    <C-\><C-n>:FloatermToggle<CR>
 nnoremap <silent> <C-N> :bn<CR>
 nnoremap <silent> <C-P> :bp<CR>
 autocmd VimEnter * :clearjumps
+
+"""""""""""""""""""""""""""" end
+
+" nerdtree配置
+"""""""""""""""""""""""""""" start
+nnoremap <C-t> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=23
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 """""""""""""""""""""""""""" end
