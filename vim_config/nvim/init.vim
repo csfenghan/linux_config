@@ -253,19 +253,19 @@ let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 " popup mode
-let g:Lf_WindowPosition = 'left'
+let g:Lf_WindowPosition = 'popup'
 let g:Lf_PopupWidth = 0.8
-let g:Lf_PopupHeight = 0.95
+let g:Lf_PopupHeight = 0.9
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = "<leader>f"
-noremap <leader>b :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>m :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+let g:Lf_ShortcutF = "<C-p>"
+noremap <A-b> :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <A-m> :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 "noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
 "noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-noremap <leader>u :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
+noremap <C-m> :<C-U><C-R>=printf("Leaderf function %s", "")<CR><CR>
 
 "noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 "noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -317,31 +317,56 @@ let g:coc_snippet_next = '<tab>'
 
 " vim-floaterm配置
 """"""""""" start
-let g:floaterm_height=0.6
+let g:floaterm_height=0.7
 let g:floaterm_width=1.0
-nnoremap   <silent>   <F8>     :FloatermNew<CR>
-tnoremap   <silent>   <F8>     <C-\><C-n>:FloatermNew<CR>
-"tnoremap   <silent>   <F9>     <C-\><C-n>:FloatermKill<CR>
-nnoremap   <silent>   <F9>    :FloatermPrev<CR>
-tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermPrev<CR>
-nnoremap   <silent>   <F10>    :FloatermNext<CR>
-tnoremap   <silent>   <F10>    <C-\><C-n>:FloatermNext<CR>
-nnoremap   <silent>   <F12>   :FloatermToggle<CR>
-tnoremap   <silent>   <F12>    <C-\><C-n>:FloatermToggle<CR>
+nnoremap   <silent>   <C-t>     :FloatermNew<CR>
+tnoremap   <silent>   <C-t>     <C-\><C-n>:FloatermNew<CR>
+tnoremap   <silent>   <C-k>     <C-\><C-n>:FloatermKill<CR>
+"nnoremap   <silent>   <C-h>     :FloatermPrev<CR>
+tnoremap   <silent>   <C-h>     <C-\><C-n>:FloatermPrev<CR>
+"nnoremap   <silent>   <C-l>     :FloatermNext<CR>
+tnoremap   <silent>   <C-l>     <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <A-=>     :FloatermToggle<CR>
+tnoremap   <silent>   <A-=>     <C-\><C-n>:FloatermToggle<CR>
+tnoremap   <C-q>                <c-\><c-n>
+
+" 基于floaterm实现的快速命令功能
+let g:quickRunCommand = ""
+let g:quickCompileCommand = ""
+function! QuickCommand(command, create)
+    let l:temp = @a
+    let @a = a:command
+
+    if a:create
+        FloatermToggle<CR>
+        call feedkeys("\<A-q>")
+    endif
+    set modifiable
+    put a || call feedkeys("A\<CR>")
+
+    let @a = temp
+endfunction
+nnoremap <silent> <F5> :call QuickCommand(g:quickRunCommand, 1)<CR>
+tnoremap <silent> <F5> <C-\><C-n>:call QuickCommand(g:quickRunCommand, 0)<CR>
+nnoremap <silent> <F5> :call QuickCommand(g:quickCompileCommand, 1)<CR>
+tnoremap <silent> <F5> <C-\><C-n>:call QuickCommand(g:quickCompileCommand, 0)<CR>
+if filereadable(".quickCommand.vim")
+    source .quickCommand.vim
+endif
 
 """"""""""" end
 
 " buffer显示
 """"""""""""""""""""""""""""" start
-nnoremap <silent> <C-N> :bn<CR>
-nnoremap <silent> <C-P> :bp<CR>
+nnoremap <silent> <C-l> :bn<CR>
+nnoremap <silent> <C-h> :bp<CR>
 autocmd VimEnter * :clearjumps
 
 """""""""""""""""""""""""""" end
 
 " nerdtree配置
 """""""""""""""""""""""""""" start
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=23
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
