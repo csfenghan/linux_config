@@ -8,10 +8,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'voldikss/vim-floaterm'                            "内置终端
     Plug 'vim-airline/vim-airline'                          "vim状态栏
     Plug 'altercation/vim-colors-solarized'                 "vim主题
-    Plug 'ap/vim-buftabline'                                "buffer状态栏
+    "Plug 'ap/vim-buftabline'                                "buffer状态栏
     Plug 'preservim/nerdtree'                               "目录树
     Plug 'puremourning/vimspector'
     Plug 'csfenghan/custom-vim'
+    "Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
+    Plug 'ryanoasis/vim-devicons' "Icons without colours
+    Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 call plug#end()
 
 
@@ -30,6 +33,10 @@ set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,cp936,gbk,gbk2312
 set fileencoding=utf-8
 
-"set background=dark
-set background=light
+"""""""""""""""""""""""""""""""""""""""
+" gui美化配置
+"""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+let g:solarized_termtrans = 1
+set background=dark
 colorscheme solarized
