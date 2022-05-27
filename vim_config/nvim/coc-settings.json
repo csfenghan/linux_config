@@ -1,5 +1,0 @@
-{
-    "diagnostic.enable": true,
-    "diagnostic.level":"hint",
-    "diagnostic.errorSign":"×"
-}
